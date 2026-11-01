@@ -1,212 +1,96 @@
-# bnpl-risk-analysis
-Overview
+# BNPL Risk Analysis & Prediction
+
+## Overview
 
 This project focuses on analyzing and predicting repayment risks among Buy Now Pay Later (BNPL) users using Machine Learning techniques.
 
 The project aims to identify users who are likely to experience late payments or payment defaults, segment users based on their behavior, and understand the key factors influencing repayment risks.
 
-The analysis combines classification, clustering, feature engineering, and model explainability to provide a more comprehensive understanding of BNPL user behavior.
+The analysis combines classification, clustering, feature engineering, and model explainability to provide a comprehensive understanding of BNPL user behavior.
 
-Objectives
+## Objectives
 
-Analyze BNPL user characteristics and repayment behavior.
+- Analyze BNPL user characteristics and repayment behavior.
+- Predict the probability of payment default.
+- Segment users based on their behavioral patterns and risk levels.
+- Develop a BNPL Risk Index to measure individual user risk.
+- Identify important features influencing repayment predictions using SHAP.
 
-Predict the probability of payment default.
+## Technologies & Libraries
 
-Segment users into different behavioral and risk-based personas.
+- Python
+- Pandas
+- NumPy
+- Matplotlib
+- Seaborn
+- Scikit-learn
+- XGBoost
+- SHAP
 
-Develop a BNPL Risk Index to measure individual user risk.
+## Project Workflow
 
-Identify important features influencing repayment predictions using SHAP.
+### 1. Data Exploration & Cleaning
+- Load and explore the dataset.
+- Check missing values.
+- Check duplicate records.
+- Clean and prepare the data for analysis.
 
-Dataset
-
-The project uses the bnpl_dataset_v2.csv dataset.
-
-Some of the features used in the analysis include:
-
-Feature
-
-Description
-
-customer_age
-
-Customer age
-
-annual_income
-
-Annual customer income
-
-credit_score
-
-Customer credit score
-
-purchase_amount
-
-BNPL transaction amount
-
-checkout_time_seconds
-
-Checkout duration
-
-purchase_category
-
-Purchase category
-
-bnpl_provider
-
-BNPL service provider
-
-repayment_status
-
-Original repayment status
-
-Note: The dataset is not included in this repository. You need to provide the dataset separately to run the notebook.
-
-Technologies & Libraries
-
-Python
-
-Pandas & NumPy
-
-Matplotlib & Seaborn
-
-Scikit-learn
-
-XGBoost
-
-SHAP
-
-Project Workflow
-
-1. Data Exploration & Cleaning
-
-Load and inspect the dataset.
-
-Identify missing values.
-
-Standardize column names.
-
-Remove duplicate records.
-
-Convert numerical columns into appropriate data types.
-
-2. Feature Engineering
+### 2. Feature Engineering
 
 Create additional features to improve model performance, including:
+- Purchase-to-income ratio.
+- Income-to-purchase ratio.
+- Log transformations.
+- Credit score risk indicators.
+- Purchase and income risk flags.
 
-Purchase-to-income ratio.
+### 3. User Segmentation
 
-Income-to-purchase ratio.
+K-Means clustering is used to group BNPL users into four behavioral personas:
 
-Log transformations.
+- Responsible User
+- Promo Hunter
+- Frequent Borrower
+- High Risk Borrower
 
-Credit score risk indicators.
-
-Purchase and income risk flags.
-
-Age and credit score categories.
-
-Risk pressure score.
-
-3. Target Encoding
-
-The original repayment_status is converted into a binary classification target:
-
-Label
-
-Meaning
-
-0
-
-Paid on time
-
-1
-
-Late payment / Default
-
-4. User Segmentation with K-Means
-
-K-Means clustering is used to divide BNPL users into four personas based on their characteristics and repayment risk:
-
-Responsible User
-
-Promo Hunter
-
-Frequent Borrower
-
-High Risk Borrower
-
-5. Classification Models
+### 4. Classification Models
 
 Three classification algorithms are implemented and compared:
 
-Logistic Regression
+- Logistic Regression
+- Random Forest
+- XGBoost
 
-Random Forest
+### 5. Model Evaluation
 
-XGBoost
+The models are evaluated using several metrics:
 
-XGBoost is further optimized using class imbalance handling and threshold tuning.
+- Accuracy
+- Precision
+- Recall
+- F1-Score
+- ROC-AUC
+- PR-AUC
+- Confusion Matrix
+- Classification Report
 
-6. Model Evaluation
-
-The models are evaluated using:
-
-Accuracy
-
-Balanced Accuracy
-
-Precision
-
-Recall
-
-F1-Score
-
-ROC-AUC
-
-PR-AUC
-
-Confusion Matrix
-
-Classification Report
-
-Threshold tuning is performed to find a suitable classification threshold based on the F2-score.
-
-7. BNPL Risk Index
+### 6. BNPL Risk Index
 
 A risk scoring system is developed using XGBoost prediction probabilities.
 
 The predicted probability is converted into a BNPL Risk Index ranging from 0 to 100.
 
-Users are categorized into four risk levels:
+Users are categorized into different risk levels:
 
-Risk Level
+- Low
+- Medium
+- High
+- Critical
 
-Description
-
-Low
-
-Low repayment risk
-
-Medium
-
-Moderate repayment risk
-
-High
-
-High repayment risk
-
-Critical
-
-Very high repayment risk
-
-8. Model Explainability with SHAP
+### 7. Model Explainability
 
 SHAP (SHapley Additive exPlanations) is used to:
 
-Identify the most influential features.
-
-Understand how features affect model predictions.
-
-Analyze the top risk factors for individual users.
+- Identify the most influential features.
+- Understand how features affect model predictions.
+- Analyze individual user risk factors.
