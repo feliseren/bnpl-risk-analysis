@@ -1,4 +1,5 @@
-# bnpl-risk-analysisOverview
+# bnpl-risk-analysis
+Overview
 
 This project focuses on analyzing and predicting repayment risks among Buy Now Pay Later (BNPL) users using Machine Learning techniques.
 
